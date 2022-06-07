@@ -255,3 +255,5 @@ SELECT users.username, comments.content, photos.image_url FROM comments JOIN use
 
 -- Same as prevois
 SELECT users.username, comments.content, photos.image_url FROM comments JOIN users ON users.id=comments.user_id JOIN photos ON comments.photo_id=photos.id WHERE photos.user_id=comments.user_id;
+
+SELECT count(*) FROM likes WHERE photo_id=4;
