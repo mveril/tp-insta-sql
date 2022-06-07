@@ -1,7 +1,9 @@
+-- 1) Create database
 CREATE DATABASE tpinstasql;
 
 USE tpinstasql;
 
+-- 2) Create tables
 CREATE TABLE users(
   id INT AUTO_INCREMENT PRIMARY KEY,
   last_name VARCHAR(50) NOT NULL,
@@ -34,6 +36,8 @@ CREATE TABLE comments(
   FOREIGN KEY(user_id) REFERENCES users(id) ON UPDATE CASCADE ON DELETE SET NULL,
   FOREIGN KEY(photo_id) REFERENCES photos(id) ON UPDATE CASCADE ON DELETE CASCADE
 );
+
+-- 3) Filling tables using the tool https://www.mockaroo.com
 
 insert into users (id, username, last_name, first_name, email, avatar) values (1, 'lswires0', 'Swires', 'Lusa', 'lswires0@pagesperso-orange.fr', 'https://robohash.org/estinciduntquibusdam.png?size=50x50&set=set1');
 insert into users (id, username, last_name, first_name, email, avatar) values (2, 'kburling1', 'Burling', 'Karita', 'kburling1@furl.net', 'https://robohash.org/laborumaddicta.png?size=50x50&set=set1');
@@ -242,18 +246,24 @@ insert into comments (user_id, photo_id, content) values (6, 8, 'a ipsum integer
 insert into comments (user_id, photo_id, content) values (7, 47, 'nibh quisque id justo sit amet sapien dignissim vestibulum vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae nulla dapibus dolor vel est donec odio justo sollicitudin');
 insert into comments (user_id, photo_id, content) values (2, 7, 'hac habitasse platea dictumst morbi vestibulum velit id pretium iaculis diam erat fermentum justo nec condimentum neque sapien placerat ante nulla justo aliquam quis turpis eget elit sodales scelerisque mauris sit amet eros suspendisse accumsan tortor quis turpis sed');
 
+-- 4) Get username and content for all comments
 SELECT users.username, comments.content FROM comments JOIN users ON comments.user_id=users.id;
 
+-- 5) Get photo url and content for all comments
 SELECT photos.image_url, comments.content FROM comments JOIN photos ON comments.photos_id=photos.id;
 
+-- 6) get photo url and associated user name
 SELECT photos.image_url, users.username FROM users JOIN photos ON users.id=photos.user_id;
 
+-- 7) Get all comments for the photo 3
 SELECT users.username, comments.content FROM users JOIN comments ON users.id=comments.user_id WHERE comments.photo_id=3;
 
-
+-- 8) Get all comments by the publisher of the photo
 SELECT users.username, comments.content, photos.image_url FROM comments JOIN users ON users.id=comments.user_id JOIN photos ON comments.photo_id=photos.id WHERE photos.user_id=comments.user_id;
 
+-- 9) Same as previous with user name
 -- Same as prevois
 SELECT users.username, comments.content, photos.image_url FROM comments JOIN users ON users.id=comments.user_id JOIN photos ON comments.photo_id=photos.id WHERE photos.user_id=comments.user_id;
 
+-- 10) Count likes for a photo
 SELECT count(*) FROM likes WHERE photo_id=4;
