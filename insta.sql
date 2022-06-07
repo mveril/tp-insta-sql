@@ -241,3 +241,5 @@ insert into comments (user_id, photo_id, content) values (20, 36, 'maecenas rhon
 insert into comments (user_id, photo_id, content) values (6, 8, 'a ipsum integer a nibh in quis justo maecenas rhoncus aliquam lacus morbi quis tortor id nulla ultrices aliquet maecenas leo odio condimentum id luctus nec molestie sed justo pellentesque viverra pede ac diam cras pellentesque volutpat dui maecenas tristique est et tempus semper est quam pharetra');
 insert into comments (user_id, photo_id, content) values (7, 47, 'nibh quisque id justo sit amet sapien dignissim vestibulum vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae nulla dapibus dolor vel est donec odio justo sollicitudin');
 insert into comments (user_id, photo_id, content) values (2, 7, 'hac habitasse platea dictumst morbi vestibulum velit id pretium iaculis diam erat fermentum justo nec condimentum neque sapien placerat ante nulla justo aliquam quis turpis eget elit sodales scelerisque mauris sit amet eros suspendisse accumsan tortor quis turpis sed');
+
+SELECT users.username, comments.content FROM comments JOIN users ON comments.user_id=users.id;
