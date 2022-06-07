@@ -243,3 +243,5 @@ insert into comments (user_id, photo_id, content) values (7, 47, 'nibh quisque i
 insert into comments (user_id, photo_id, content) values (2, 7, 'hac habitasse platea dictumst morbi vestibulum velit id pretium iaculis diam erat fermentum justo nec condimentum neque sapien placerat ante nulla justo aliquam quis turpis eget elit sodales scelerisque mauris sit amet eros suspendisse accumsan tortor quis turpis sed');
 
 SELECT users.username, comments.content FROM comments JOIN users ON comments.user_id=users.id;
+
+SELECT photos.image_url, comments.content FROM comments JOIN photos ON comments.photos_id=photos.id;
