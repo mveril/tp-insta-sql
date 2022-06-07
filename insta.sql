@@ -252,3 +252,6 @@ SELECT users.username, comments.content FROM users JOIN comments ON users.id=com
 
 
 SELECT users.username, comments.content, photos.image_url FROM comments JOIN users ON users.id=comments.user_id JOIN photos ON comments.photo_id=photos.id WHERE photos.user_id=comments.user_id;
+
+-- Same as prevois
+SELECT users.username, comments.content, photos.image_url FROM comments JOIN users ON users.id=comments.user_id JOIN photos ON comments.photo_id=photos.id WHERE photos.user_id=comments.user_id;
