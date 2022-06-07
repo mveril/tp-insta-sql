@@ -249,3 +249,6 @@ SELECT photos.image_url, comments.content FROM comments JOIN photos ON comments.
 SELECT photos.image_url, users.username FROM users JOIN photos ON users.id=photos.user_id;
 
 SELECT users.username, comments.content FROM users JOIN comments ON users.id=comments.user_id WHERE comments.photo_id=3;
+
+
+SELECT users.username, comments.content, photos.image_url FROM comments JOIN users ON users.id=comments.user_id JOIN photos ON comments.photo_id=photos.id WHERE photos.user_id=comments.user_id;
